@@ -1,0 +1,25 @@
+[
+  {
+    "defaults": {
+      "link": {
+        "create": true,
+        "relink": true
+      }
+    }
+  },
+  {
+    "clean": ["~"]
+  },
+  {
+    "link": {
+      "~/.tmux.conf":              "tmux.conf",
+      "~/.emacs.d/init.el":        "init.el",
+      "~/.emacs.d/emacs-init.org": "emacs-init.org"
+    }
+  },
+  {
+    "shell": [
+      ["git submodule update --init --recursive", "Installing submodules"]
+    ]
+  }
+]
