@@ -34,4 +34,32 @@ POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="black"
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 
+#General Aliases:
+alias emacs='emacs -nw'
+
+#Git Aliases:
+
+alias g='git'
+alias gs='git status'
+alias ga='git add -A'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gcam='git commit --am'
+alias gcl='git clone'
+alias gcp='git checkout -'
+alias gnb='git checkout -b'
+alias gp='git pull origin'
+alias gpm='git pull origin master'
+alias gpd='git pull origin dev'
+alias gpum='git push origin master'
+alias gpud='git push origin dev'
+alias gpu='git push origin'
+alias grh='git reset --hard HEAD'
+alias grs='git reset --soft HEAD'
+alias gmnff='git merge --no-ff'
+alias gm='git merge'
+alias gss='git stash save'
+alias gsp='git stash pop'
+alias gsl='git stash list'
+
 source $ZSH/oh-my-zsh.sh
