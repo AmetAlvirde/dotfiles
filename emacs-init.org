@@ -14,7 +14,21 @@
 (require 'evil)
 (evil-mode t)
 
+;; Cool utf8 bullets to our org mode that I can't get wieking in
+;; terminal mode. But I will. Someday. Definitely.
+;;(require 'org-bullets)
+;;  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 2)))
+
+;; Hide leading stars
+(setq org-startup-indented t
+      org-hide-leading-stars t)
+
 (menu-bar-mode -1)
+
+;; Since this file lives in a dotfiles repository, emacs continuosly asks
+;; if it should follow the symlink to the actual file. This prevents the
+;; tedious asking part and tells emacs to alwats follow the symlink
+(setq vc-follow-symlinks t)
 
 (defun ensure-package-installed (&rest packages)
   "Assure every package is installed, ask for installation if it’s not.
@@ -55,27 +69,11 @@ Return a list of installed packages or nil for every skipped package."
       (progn
         (define-key evil-normal-state-map (kbd "TAB") 'org-cycle)
         (define-key org-mode-map (kbd "C-M-j") 'org-meta-return)
-        (define-key org-mode-map (kbd "C-j") 'org-insert-heading-respect-content)
-        ;; -nw has no ALT+arrows. Remmaped to C-c <Vim-direction-key>
+        ;; -nw has no ALT+arrows. Remmaped to C-c <Vim-direction-ky>
         (define-key org-mode-map (kbd "C-c l") 'org-metaright)
         (define-key org-mode-map (kbd "C-c h") 'org-metaleft)
         (define-key org-mode-map (kbd "C-c j") 'org-metadown)
         (define-key org-mode-map (kbd "C-c k") 'org-metaup)
-        ;; -nw has no ALT+SHIFT+arrows. Remmaped to C-c C-<Vim-direction-key>
-        ;; Every C-c C-<Vim-direction> (Except C-c C-k) is binded to an action
-        ;; from the menu-bar which I don't use. so I don't care to lose'em.
-        (define-key org-mode-map (kbd "C-c C-l") 'org-metaright)
-        (define-key org-mode-map (kbd "C-c C-h") 'org-metaleft)
-        (define-key org-mode-map (kbd "C-c C-j") 'org-metadown)
-        (define-key org-mode-map (kbd "C-c C-k") 'org-metaup)
-        ;; Now I need to remap the C-c C-k so I wont lose its function
-        ;; C-k deletes a line in emacs. I don't care cause I use my good
-        ;; old friend d-d from Vim.
-        (define-key org-mode-map (kbd "C-k") 'org-kill-note-or-show-branches)
-        ;; Let's go for the M-S-<something> remap!
-        (define-key org-mode-map (kbd "C-c t") 'org-insert-todo-heading)
-        ;; Let's go for the C-S-<something> remap!
-        (define-key org-mode-map (kbd "C-c C-x C-t") 'org-insert-todo-heading-respect-content)
       )
     )
   )
