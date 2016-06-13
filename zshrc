@@ -2,7 +2,7 @@ export ZSH=/home/amet/.oh-my-zsh
 export TERM="xterm-256color"
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/amet/.gem/ruby/2.3.0/bin"
 
 # Uncomment to delete context segment when it has a value of amet@Winterfell
 #DEFAULT_USER=$USER
@@ -36,6 +36,7 @@ POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 
 #General Aliases:
 alias emacs='emacs -nw'
+alias mux='tmuxinator'
 
 #Git Aliases:
 
