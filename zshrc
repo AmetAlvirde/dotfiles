@@ -35,13 +35,18 @@ POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="black"
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 
 #General Aliases:
-alias emacs='emacs -nw'
+alias e='emacs -nw'
+alias v='vim'
 alias mux='tmuxinator'
+alias dotfiles='sh ~/OpenSource/dotfiles/install'
 
 #Git Aliases:
 
 alias g='git'
 alias gs='git status'
+alias gd='git diff'
+alias gl='git log --oneline --graph --decorate'
+
 alias ga='git add -A'
 alias gc='git commit'
 alias gca='git commit --amend'
@@ -62,5 +67,12 @@ alias gm='git merge'
 alias gss='git stash save'
 alias gsp='git stash pop'
 alias gsl='git stash list'
+#Dev aliases:
+
+alias bi='bower install'
+alias bu='bower update'
+alias grt='grunt'
+alias grtd='grunt dev'
+alias nd='nodemon'
 
 source $ZSH/oh-my-zsh.sh
