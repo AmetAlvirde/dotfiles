@@ -14,6 +14,26 @@
 (require 'evil)
 (evil-mode t)
 
+;; magit set-up
+(require 'magit)
+(with-eval-after-load 'info
+  (info-initialize)
+  (add-to-list 'Info-directory-list
+               "~/.emacs.d/site-lisp/magit/Documentation/"))
+
+;; magit set-up
+(global-set-key (kbd "C-x g") 'magit-status)
+
+;; make magit status go full-screen but remember previous window
+;; settings
+;; from: http://whattheemacsd.com/setup-magit.el-01.html
+(defadvice magit-status (around magit-fullscreen activate)
+    (window-configuration-to-register :magit-fullscreen)
+    ad-do-it
+    (delete-other-windows))
+
+(setq column-number-mode t)
+
 ;; Cool utf8 bullets to our org mode that I can't get wieking in
 ;; terminal mode. But I will. Someday. Definitely.
 ;;(require 'org-bullets)
@@ -24,6 +44,11 @@
       org-hide-leading-stars t)
 
 (menu-bar-mode -1)
+
+;;Column indicator limit stuff:
+(require 'fill-column-indicator)
+(add-hook 'after-change-major-mode-hook 'fci-mode)
+(setq-default fill-column 90)
 
 ;; Since this file lives in a dotfiles repository, emacs continuosly asks
 ;; if it should follow the symlink to the actual file. This prevents the

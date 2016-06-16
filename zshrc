@@ -35,10 +35,16 @@ POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="black"
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 
 #General Aliases:
+alias emacs='emacs -nw'
 alias e='emacs -nw'
 alias v='vim'
 alias mux='tmuxinator'
 alias dotfiles='sh ~/OpenSource/dotfiles/install'
+
+#Dotfiles edition aliases:
+alias eei='v ~/OpenSource/dotfiles/emacs-init.org'
+alias ez='v ~/OpenSource/dotfiles/zshrc'
+alias et='v ~/OpenSource/dotfiles/tmux.conf'
 
 #Git Aliases:
 
