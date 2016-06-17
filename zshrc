@@ -81,4 +81,5 @@ alias grt='grunt'
 alias grtd='grunt dev'
 alias nd='nodemon'
 
+source /usr/share/nvm/nvm.sh
 source $ZSH/oh-my-zsh.sh
