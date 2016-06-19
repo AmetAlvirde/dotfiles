@@ -40,6 +40,7 @@ alias e='emacs -nw'
 alias v='vim'
 alias mux='tmuxinator'
 alias dotfiles='sh ~/OpenSource/dotfiles/install'
+alias bujo='cd ~/Dropbox/bujo/2016/'
 
 #Dotfiles edition aliases:
 alias eei='v ~/OpenSource/dotfiles/emacs-init.org'
@@ -81,5 +82,6 @@ alias grt='grunt'
 alias grtd='grunt dev'
 alias nd='nodemon'
 
+source /home/amet/.keys.sh
 source /usr/share/nvm/nvm.sh
 source $ZSH/oh-my-zsh.sh

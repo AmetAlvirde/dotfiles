@@ -14,6 +14,8 @@
 (require 'evil)
 (evil-mode t)
 
+(global-wakatime-mode)
+
 ;; Insane backup files madness getting managed:
 
 ;; Default and per-save backups go here:
