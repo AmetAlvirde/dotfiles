@@ -12,7 +12,12 @@
 (package-initialize)
 
 (require 'evil)
+(require 'powerline)
 (evil-mode t)
+
+(require 'cl)
+(require 'airline-themes)
+(load-theme 'airline-papercolor t)
 
 (setq org-tags-column 90)
 (setq org-agenda-files '("~/Dropbox/bujo/2016/books/"
