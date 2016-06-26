@@ -14,7 +14,21 @@
 (require 'evil)
 (evil-mode t)
 
-(global-wakatime-mode)
+(setq org-tags-column 90)
+(setq org-agenda-files '("~/Dropbox/bujo/2016/books/"
+                         "~/Dropbox/bujo/2016/codeFables/"
+                         "~/Dropbox/bujo/2016/DevSuperHeroes/"
+                         "~/Dropbox/bujo/2016/GOST/"
+                         "~/Dropbox/bujo/2016/movies/"
+                         "~/Dropbox/bujo/2016/newThings/"
+                         "~/Dropbox/bujo/2016/prestigos/"
+                         "~/Dropbox/bujo/2016/shortFilms/"
+                         "~/Dropbox/bujo/2016/stories/"
+                         "~/Dropbox/bujo/2016/training/"
+                         "~/Dropbox/bujo/2016/videos/"))
+
+;;GOAL: TODO: fire up wakatime only when working on certain projects
+;;(global-wakatime-mode)
 
 ;; Insane backup files madness getting managed:
 
@@ -99,7 +113,8 @@ Return a list of installed packages or nil for every skipped package."
 (package-initialize)
 
 ;; Assuming you wish to install "iedit" and "magit"
-(ensure-package-installed 'evil)
+(ensure-package-installed 'evil 'magit 'fill-column-indicator)
+
 
 ;; Set encoding system to utlf-8
 (prefer-coding-system 'utf-8)
