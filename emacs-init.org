@@ -14,10 +14,21 @@
 (require 'evil)
 (require 'powerline)
 (evil-mode t)
+(global-linum-mode t)
 
 (require 'cl)
 (require 'airline-themes)
 (load-theme 'airline-papercolor t)
+
+(require 'linum-relative)
+(linum-relative-on)
+
+(require 'git-gutter)
+(global-git-gutter-mode +1)
+(git-gutter:linum-setup)
+
+(global-hl-line-mode +1)
+(set-face-background hl-line-face "#E2E2E2")
 
 (setq org-tags-column 90)
 (setq org-agenda-files '("~/Dropbox/bujo/2016/books/"
