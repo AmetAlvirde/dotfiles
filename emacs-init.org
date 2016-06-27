@@ -11,6 +11,21 @@
 (setq package-enable-at-startup nil)
 (package-initialize)
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(neo-window-position (quote right))
+ '(wakatime-api-key "getenv(\"WAKA_TIME_API_KEY\")"))
+ '(git-gutter:update-interval 2)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
 (require 'evil)
 (require 'powerline)
 (evil-mode t)
@@ -29,6 +44,10 @@
 
 (global-hl-line-mode +1)
 (set-face-background hl-line-face "#E2E2E2")
+
+(require 'neotree)
+(global-set-key (kbd "C-e") 'neotree-toggle)
+;;(neo-window-position 'left)
 
 (setq org-tags-column 90)
 (setq org-agenda-files '("~/Dropbox/bujo/2016/books/"
@@ -138,6 +157,13 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Change yes or no questions to y or n
 (fset 'yes-or-no-p 'y-or-n-p)
+
+(add-hook 'neotree-mode-hook
+  (lambda ()
+    (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+    (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
+    (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
 
 ;; Workaround for org-mode problem with gnome terminal
 ;; https://gist.github.com/hanachin/997420
