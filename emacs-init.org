@@ -49,6 +49,9 @@
 (global-set-key (kbd "C-e") 'neotree-toggle)
 ;;(neo-window-position 'left)
 
+(require 'autopair)
+(autopair-global-mode)
+
 (setq org-tags-column 90)
 (setq org-agenda-files '("~/Dropbox/bujo/2016/books/"
                          "~/Dropbox/bujo/2016/codeFables/"
@@ -146,6 +149,10 @@ Return a list of installed packages or nil for every skipped package."
 
 ;; Activate installed packages
 (package-initialize)
+
+
+;; works, but is UGLY AS SHIT!
+;;(global-evil-tabs-mode t)
 
 ;; Assuming you wish to install "iedit" and "magit"
 (ensure-package-installed 'evil 'magit 'fill-column-indicator)

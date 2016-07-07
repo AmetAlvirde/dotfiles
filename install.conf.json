@@ -12,10 +12,11 @@
   },
   {
     "link": {
-      "~/.tmux.conf":              "tmux.conf",
-      "~/.zshrc":                  "zshrc",
+      "~/.eslintrc":               "eslintrc",
       "~/.emacs.d/init.el":        "init.el",
-      "~/.emacs.d/emacs-init.org": "emacs-init.org"
+      "~/.emacs.d/emacs-init.org": "emacs-init.org",
+      "~/.tmux.conf":              "tmux.conf",
+      "~/.zshrc":                  "zshrc"
     }
   },
   {
