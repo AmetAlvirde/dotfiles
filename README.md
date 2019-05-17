@@ -1,27 +1,23 @@
 AmetAlvirde’s Dotfiles
 =================
 
-Time has come in which I’m mature enough to recognize the incredible advantages
-of mantaining a Dotfiles project and being a more responsible (and sophisticated)
-sworn member of the developers community.
+Here is what I use every day:
 
-So before the old gods, the new ones, the red, the one that I believe in, and
-you, my beloved community, I present with nothing but my roaring desire to help
-every dev brother that shall cross my path, my Dotfiles.
+Arch linux with gnome 3.
+Terminator as terminal emulator.
+Zsh (with oh-my-zsh) shell.
+Tmux as terminal multiplexor.
+spacemacs as emacs, for orgmode, mainly.
 
-Initially there are just my ~/.tmux.conf, ~/.tmuxinator tempaltes, and my
-~/.init.el which fires up my ~/.emacs-init.org configuration file which is,
-of course, written with org-mode, because let’s face it: that’s elegant and
-awesome as fuck.
+These dotfiles have a friendly description so you may understand it better.
+I do not recommend to clone it and simply use it, but to start your own
+from scratch, and study these as a guide for getting where you want.
 
-I also use zsh and vim like HARDCORE. But I decided to declare bankrupcy with
-both of them, since I’m guilty as charged for the inappropriate use of config
-dotfile frameworks that does much more than I imagine they do, and that I have
-slain with non-intrusive, but also devastating non-ducumented changes into its
-very source. Hence, here I am. Releaving myself from such horrors and trying
-to do some good to the society by sharing my dotfiles as an Open Source project.
+This README should get better at some point soon. but the files in here
+are well documented.
 
-For the web is grandious, and full of hackers.
+If you have any questions or suggestions I'm happy to chat on Twitter:
+@AmetAlvirde
 
-Yours, truly:
-Lord Amet. The polymath, from House Render.
+
+
