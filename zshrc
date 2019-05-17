@@ -1,87 +1,101 @@
-export ZSH=/home/amet/.oh-my-zsh
-export TERM="xterm-256color"
+# Overview:
+#
+# I use ZSH instead of bash, along with oh-my-zsh, powerlevel9k theme
+# and asdf as my programming languages version manager. (like nvm,
+# but for everthing)
 
+# Tmux gets 256 colors to display, so vim displays colorschemes properly.
+export TERM=xterm-256color 
+# I use oh-my-zsh, this loads it. Highly recommend exploring it if you
+# don't know it
+export ZSH="/home/amet/.oh-my-zsh" #
+# Enables NeoVim to display true colors (basically enhances colorschemes) 
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
+# Exports bash path.
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Exports language and encoding. I like to be explicit with this.
+export LANG=en_US.UTF-8
+# export powerlevel9k theme. I installed via AUR and symlinked to this:
+source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+
+# I use powerlevel9k theme for my prompt
 ZSH_THEME="powerlevel9k/powerlevel9k"
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/platform-tools:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/amet/.gem/ruby/2.3.0/bin"
 
-# Uncomment to delete context segment when it has a value of amet@Winterfell
-#DEFAULT_USER=$USER
-
+# Show something like:
+# amet@winterfell > /dotfiles > master > ok 
+# where okay is the status of the last shell exit code.
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs status)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_COLOR_SCHEME='light'
-POWERLEVEL9K_DISABLE_RPROMPT=true
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ram context dir vcs)
 
 # These two settings ensure that I always just see the current
-# directory in which I'm working, without awkwards references
-# to its parent directories.
+# directory in which I'm working.
+# ~/OpenSource/Dotfiles/ = /Dotfiles
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER=''
 
-#All black prompt (besides vcs stuff)
+# Custom colors for my powerlevel9k segments. 
+POWERLEVEL9K_DATE_BACKGROUND="black"
+POWERLEVEL9K_DATE_FOREGROUND="white"
 
-POWERLEVEL9K_RAM_BACKGROUND="black"
-POWERLEVEL9K_RAM_FOREGROUND="white"
+POWERLEVEL9K_STATUS_ERROR_BACKGROUND="darkred"
+POWERLEVEL9K_STATUS_ERROR_FOREGROUND="grey93"
 
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="black"
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="white"
+POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="blue"
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="grey93"
 
-POWERLEVEL9K_DIR_HOME_BACKGROUND="black"
-POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="black"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="black"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND="green"
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND="grey23"
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="green"
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND="grey23"
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND="grey23"
 
-#General Aliases:
-alias emacs='emacs -nw'
-alias e='emacs -nw'
-alias v='vim'
-alias mux='tmuxinator'
-alias dotfiles='sh ~/OpenSource/dotfiles/install'
-alias bujo='cd ~/Dropbox/bujo/2016/'
+POWERLEVEL9K_DIR_HOME_BACKGROUND="blue"
+POWERLEVEL9K_DIR_HOME_FOREGROUND="grey93"
 
-#Dotfiles edition aliases:
-alias eei='v ~/OpenSource/dotfiles/emacs-init.org'
-alias ez='v ~/OpenSource/dotfiles/zshrc'
-alias et='v ~/OpenSource/dotfiles/tmux.conf'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="blue"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="grey85"
 
-#Git Aliases:
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="blue"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="grey93"
 
-alias g='git'
-alias gs='git status'
-alias gd='git diff'
-alias gl='git log --oneline --graph --decorate'
+# asdf: its a version manager for any programming language you can
+# imagine.
+# git provides git auto completions and shorthands
+# git-extras provides even more shorthands
+# arch linux provides shorthands for interacting with Arch, mostly
+# pacman stuff.
+# Vi mode allows me yo use vim features on the shell!
+# web search lets me google things from the shell
+# z learns my cd habits, so i can z dotfiles when I want to
+# cd ~/OpenSource/Dotfiles, for example.
+plugins=(asdf git git-extras archlinux vi-mode web-search z)
 
-alias ga='git add -A'
-alias gc='git commit'
-alias gca='git commit --amend'
-alias gcam='git commit --am'
-alias gcl='git clone'
-alias gcp='git checkout -'
-alias gnb='git checkout -b'
-alias gp='git pull origin'
-alias gpm='git pull origin master'
-alias gpd='git pull origin dev'
-alias gpum='git push origin master'
-alias gpud='git push origin dev'
-alias gpu='git push origin'
-alias grh='git reset --hard HEAD'
-alias grs='git reset --soft HEAD'
-alias gmnff='git merge --no-ff'
-alias gm='git merge'
-alias gss='git stash save'
-alias gsp='git stash pop'
-alias gsl='git stash list'
-#Dev aliases:
-
-alias bi='bower install'
-alias bu='bower update'
-alias grt='grunt'
-alias grtd='grunt dev'
-alias nd='nodemon'
-
-source /home/amet/.keys.sh
-source /usr/share/nvm/nvm.sh
+#sources oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+
+
+# Sets neovim as local and remote text editor 
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+else
+  export EDITOR='nvim'
+fi
+
+# Global aliases:
+alias vim='nvim'
+# emacs/spacemacs runs windowed by default. -nw runs it in terminal (no window)
+alias emacs='emacs -nw' 
+# always be lazy
+alias start-postgres='sudo systemctl start postgresql.service'
+alias stop-postgres='sudo systemctl stop postgresql.service'
+
+# forget forever mkdir something && cd something
+function mkcd() { mkdir -p $1 && cd $1 }
+function cdf() { cd *$1*/ } # stolen from @topfunky
+
+
+# Sources asdf and its completions
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
