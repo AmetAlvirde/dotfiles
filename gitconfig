@@ -1,0 +1,36 @@
+[user]
+  name = Amet Alvirde 
+  email = Amet.Alvirde@gmail.com 
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = input
+  editor = /usr/bin/nvim
+[color]
+  ui = auto
+[push]
+  default = upstream
+[fetch]
+  prune = true
+[alias]
+  s = status
+  aa = add --all
+  c = commit 
+  ca = commit --amend --verbose
+  car = commit --amend --no-edit
+  co = checkout
+  nb = checkout -b
+  copysha = !git rev-parse HEAD | pbcopy
+  fall = fetch --all
+  glog = log -E -i --grep
+  pl = pull
+  ps = push
+  rbc = rebase --continue
+  sl = log --oneline --decorate -20
+  sla = log --oneline --decorate --graph --all -20
+  slp = log --oneline --decorate
+  slap = log --oneline --decorate --graph --all
+  uncommit = reset --soft HEAD^
+  fuckit = reset --hard HEAD
+  unstage = reset
+  upstream = rev-parse --abbrev-ref --symbolic-full-name @{u}
+  ureset = !git reset --hard $(git upstream)

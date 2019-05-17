@@ -14,7 +14,8 @@
     "link": {
       "~/.tmux.conf":              "tmux.conf",
       "~/.zshrc":                  "zshrc",
-      "~/.config/nvim/init.vim":   "init.vim"
+      "~/.config/nvim/init.vim":   "init.vim",
+      "~/.gitconfig":              "gitconfig"
     }
   },
   {

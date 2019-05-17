@@ -89,6 +89,8 @@ alias emacs='emacs -nw'
 # always be lazy
 alias start-postgres='sudo systemctl start postgresql.service'
 alias stop-postgres='sudo systemctl stop postgresql.service'
+# reload dotfiles (should refactor)
+alias dotfiles='sh ~/DevAlevardi/OpenSource/dotfiles/install'
 
 # forget forever mkdir something && cd something
 function mkcd() { mkdir -p $1 && cd $1 }
