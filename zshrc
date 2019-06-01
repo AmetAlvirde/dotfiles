@@ -12,7 +12,7 @@ export ZSH="/home/amet/.oh-my-zsh" #
 # Enables NeoVim to display true colors (basically enhances colorschemes) 
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 # Exports bash path.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH -> should move to .zshenv
 # Exports language and encoding. I like to be explicit with this.
 export LANG=en_US.UTF-8
 # export powerlevel9k theme. I installed via AUR and symlinked to this:
@@ -91,6 +91,7 @@ alias start-postgres='sudo systemctl start postgresql.service'
 alias stop-postgres='sudo systemctl stop postgresql.service'
 # reload dotfiles (should refactor)
 alias dotfiles='sh ~/DevAlevardi/OpenSource/dotfiles/install'
+alias galiases='git config --list | grep alias'
 
 # forget forever mkdir something && cd something
 function mkcd() { mkdir -p $1 && cd $1 }

@@ -35,7 +35,9 @@ Plug 'tpope/vim-commentary'
 " Incredible git interface 
 Plug 'tpope/vim-fugitive'
 " close jsx/html tags 
-Plug 'alvan/vim-closetag'
+" Plug 'alvan/vim-closetag'
+" Emmet
+Plug 'mattn/emmet-vim'
 " git gutter better alternative 
 Plug 'mhinz/vim-signify'
 " Ack, with ag support 
@@ -106,7 +108,8 @@ nmap k gk
 nmap j gj
 
 " Pre-populate a split command with the current directory
-nmap <leader>v :vnew <C-r>=escape(expand("%:p:h"), ' ') . '/'<cr>
+nmap <leader>v :vsplit<cr>
+nmap <leader>vs :vnew <C-r>=escape(expand("%:p:h"), ' ') . '/'<cr>
 
 " Command aliases for typoed commands (accidentally holding shift too long)
 command! Q q " Bind :Q to :q
@@ -161,12 +164,27 @@ autocmd VimResized * :wincmd =
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
 
-" close tags on these kind of files
-let g:closetag_filenames = "*.html,*.js,*.ts,*.jsx"
 
+" Emmet. This should work to enable emmet just for
+" js, html and css, but it's not working on js.
+" let g:user_emmet_install_global = 0
+" autocmd FileType js,html,css EmmetInstall
+" So I had to enable Emmet globally. This is temporal, I hope
+let g:user_emmet_mode='a'
+let g:user_emmet_leader_key='<C-a>'
 " use ag
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
 
+function! CloseAllBuffersButCurrent()
+  let curr = bufnr("%")
+  let last = bufnr("$")
+
+  if curr > 1    | silent! execute "1,".(curr-1)."bd"     | endif
+  if curr < last | silent! execute (curr+1).",".last."bd" | endif
+endfunction
+
+" Close all buffers but current
+nmap <Leader>kt :call CloseAllBuffersButCurrent()<CR>

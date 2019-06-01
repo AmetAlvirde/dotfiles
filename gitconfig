@@ -18,6 +18,7 @@
   ca = commit --amend --verbose
   car = commit --amend --no-edit
   co = checkout
+  uf = checkout --
   nb = checkout -b
   copysha = !git rev-parse HEAD | pbcopy
   fall = fetch --all
