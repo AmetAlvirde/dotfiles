@@ -3,11 +3,12 @@ AmetAlvirde’s Dotfiles
 
 Here is what I use every day:
 
-Arch linux with gnome 3.
-Terminator as terminal emulator.
-Zsh (with oh-my-zsh) shell.
-Tmux as terminal multiplexor.
-spacemacs as emacs, for orgmode, mainly.
+- Arch linux with gnome 3.
+- Terminator as terminal emulator.
+- Zsh (with oh-my-zsh) shell.
+- Tmux as terminal multiplexor.
+- NeoVim as my default text editor. 
+- Emacs, for orgmode, time-tracking and fincancial management.
 
 These dotfiles have a friendly description so you may understand it better.
 I do not recommend to clone it and simply use it, but to start your own

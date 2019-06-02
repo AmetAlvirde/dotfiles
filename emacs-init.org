@@ -1,0 +1,79 @@
+#+BEGIN_SRC emacs-lisp
+;;; setting up use-package 
+
+(require 'package)
+(setq package-enable-at-startup nil)
+
+(setq package-archives '(("ELPA"  . "http://tromey.com/elpa/")
+                        ("gnu"   . "http://elpa.gnu.org/packages/")
+                        ("melpa" . "https://melpa.org/packages/")
+                        ("org"   . "https://orgmode.org/elpa/")))
+
+(package-initialize)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;; evil mode:
+(use-package evil 
+  :ensure t
+  :init
+  ;; tweaks to evil:
+  (setq evil-vsplit-window-right t)
+  (setq evilsplit-window-below t)
+  ;; load evil after tweaks
+  (evil-mode))
+
+  (use-package linum-relative
+    :ensure t
+  )
+  (linum-relative-on)
+
+
+;; basic ui and stuff
+(load-theme 'wombat)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(setq inhibit-startup-message t)
+(setq ring-bell-function 'ignore)
+(defalias 'yes-or-no-p 'y-or-n-p)
+(global-linum-mode t)
+
+;; set UTF-8 for everything
+
+(setq locale-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+;; use async processes wherever possible:
+(use-package async
+  :ensure t
+  :init (dired-async-mode 1))
+
+;; Everything can be a project for projectile
+(use-package projectile
+  :ensure t
+  :init
+    (projectile-mode 1))
+
+;; Spaceline is the airline of spacemacs. Spacemacs is an open source
+;; emacs configuration that you should try if you do not want to learn elisp
+;; or just want a decent editor without writing a thousand lines of conf.
+;; I do not use it personally, because it slows emacs A LOT. (for somone who
+;; open instances using tmux in a terminal for quick edits frequently). But
+;; spaceline is the coolest thing ever.
+
+(use-package spaceline
+  :ensure t
+  :config
+  (require 'spaceline-config)
+    (setq spaceline-buffer-encoding-abbrev-p nil)
+    (setq spaceline-line-column-p nil)
+    (setq spaceline-line-p nil)
+    (setq powerline-default-separator (quote arrow))
+    (spaceline-spacemacs-theme))
+
+#+END_SRC

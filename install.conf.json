@@ -15,7 +15,9 @@
       "~/.tmux.conf":              "tmux.conf",
       "~/.zshrc":                  "zshrc",
       "~/.config/nvim/init.vim":   "init.vim",
-      "~/.gitconfig":              "gitconfig"
+      "~/.gitconfig":              "gitconfig",
+      "~/.emacs.d/init.el":        "init.el",
+      "~/.emacs.d/emacs-init.org": "emacs-init.org"
     }
   },
   {
