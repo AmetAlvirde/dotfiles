@@ -5,11 +5,11 @@
 # but for everthing)
 
 # Tmux gets 256 colors to display, so vim displays colorschemes properly.
-export TERM=xterm-256color 
+export TERM=xterm-256color
 # I use oh-my-zsh, this loads it. Highly recommend exploring it if you
 # don't know it
 export ZSH="/home/amet/.oh-my-zsh" #
-# Enables NeoVim to display true colors (basically enhances colorschemes) 
+# Enables NeoVim to display true colors (basically enhances colorschemes)
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 # Exports bash path.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH -> should move to .zshenv
@@ -22,7 +22,7 @@ source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Show something like:
-# amet@winterfell > /dotfiles > master > ok 
+# amet@winterfell > /dotfiles > master > ok
 # where okay is the status of the last shell exit code.
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs status)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
@@ -34,7 +34,7 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER=''
 
-# Custom colors for my powerlevel9k segments. 
+# Custom colors for my powerlevel9k segments.
 POWERLEVEL9K_DATE_BACKGROUND="black"
 POWERLEVEL9K_DATE_FOREGROUND="white"
 
@@ -75,7 +75,7 @@ plugins=(asdf git git-extras archlinux vi-mode web-search z)
 source $ZSH/oh-my-zsh.sh
 
 
-# Sets neovim as local and remote text editor 
+# Sets neovim as local and remote text editor
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nvim'
 else
@@ -85,7 +85,8 @@ fi
 # Global aliases:
 alias vim='nvim'
 # emacs/spacemacs runs windowed by default. -nw runs it in terminal (no window)
-alias emacs='emacs -nw' 
+alias emacs='TERM=xterm-24bit emacs -nw'
+alias e='TERM=xterm-24bit emacs -nw'
 # always be lazy
 alias start-postgres='sudo systemctl start postgresql.service'
 alias stop-postgres='sudo systemctl stop postgresql.service'

@@ -1,5 +1,5 @@
 #+BEGIN_SRC emacs-lisp
-;;; setting up use-package 
+;;; setting up use-package
 
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -14,8 +14,13 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+
 ;; evil mode:
-(use-package evil 
+(global-evil-leader-mode)
+(evil-leader/set-leader "<SPC>")
+(evil-leader/set-key "<SPC>" 'execute-extended-command)
+(evil-leader/set-key "pf" 'projectile-find-file)
+(use-package evil
   :ensure t
   :init
   ;; tweaks to evil:
@@ -27,11 +32,18 @@
   (use-package linum-relative
     :ensure t
   )
-  (linum-relative-on)
+
 
 
 ;; basic ui and stuff
-(load-theme 'wombat)
+;; (linum-relative-on)
+(linum-mode)
+
+ (setq zenburn-override-colors-alist
+      '(("zenburn-bg" . "#3A4A52")))
+;;      '(("zenburn-bg" . "#2E2E2E")))
+(load-theme 'zenburn t)
+
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -75,5 +87,30 @@
     (setq spaceline-line-p nil)
     (setq powerline-default-separator (quote arrow))
     (spaceline-spacemacs-theme))
+
+#+END_SRC
+
+Org mode:
+#+BEGIN_SRC emacs-lisp
+
+(use-package org-bullets
+  :ensure t
+  :init
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 2)))
+)
+
+
+(add-hook 'org-mode-hook
+  (lambda ()
+    (if window-system
+        nil
+      (progn
+        (define-key evil-normal-state-map (kbd "TAB") 'org-cycle)
+        (define-key org-mode-map (kbd "C-M-j") 'org-meta-return)
+        ;; -nw has no ALT+arrows. Remmaped to C-c <Vim-direction-ky>
+        (define-key org-mode-map (kbd "C-c l") 'org-metaright)
+        (define-key org-mode-map (kbd "C-c h") 'org-metaleft)
+        (define-key org-mode-map (kbd "C-c j") 'org-metadown)
+        (define-key org-mode-map (kbd "C-c k") 'org-metaup)))))
 
 #+END_SRC

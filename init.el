@@ -16,6 +16,11 @@
 (add-hook 'emacs-startup-hook 'startup/revert-file-name-handler-alist)
 (add-hook 'emacs-startup-hook 'startup/reset-gc)
 
+;; Since this file lives in a dotfiles repository, emacs continuosly asks
+;; if it should follow the symlink to the actual file. This prevents the
+;; tedious asking part and tells emacs to always follow the symlink
+(setq vc-follow-symlinks t)
+
 ;; emacs real configuration is on emacs-init.org
 (when (file-readable-p "~/.emacs.d/emacs-init.org")
   (org-babel-load-file
@@ -27,7 +32,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (spaceline use-package projectile async))))
+ '(custom-safe-themes
+   (quote
+    ("67aec91de254d44ac115e03d0ef16377101f37b0740deff73fcfa9c242e8d512" default)))
+ '(package-selected-packages
+   (quote
+    (evil-leader nova-theme spaceline use-package projectile async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
