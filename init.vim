@@ -1,59 +1,68 @@
-" Overview: 
+" Overview:
 "
-" Vim is the most powerful and incredible text editor in the world. 
+" Vim is the most powerful and incredible text editor in the world.
 " Neovim is a port that gets it even better.
 
 " Vimplug is my vim package manager
-call plug#begin('~/.local/share/nvim/plugged')                                  
+call plug#begin('~/.local/share/nvim/plugged')
 
-" My current colorscheme
-Plug 'sainnhe/vim-color-forest-night'
-" seamless navigation between tmux and vim 
+"Custom on development colorscheme:
+Plug 'ametalvirde/vim-snilek'
+" seamless navigation between tmux and vim
 Plug 'christoomey/vim-tmux-navigator'
-" fuzzy finnd files to edit 
+" fuzzy finnd files to edit
 Plug 'ctrlpvim/ctrlp.vim'
-" surround utility for brackets, parentheses, etc 
+" surround utility for brackets, parentheses, etc
 Plug 'tpope/vim-surround'
-" Repeat complex operations 
+" Repeat complex operations
 Plug 'tpope/vim-repeat'
-" I'm a sucker for great UI things. Airline is one of them 
+" I'm a sucker for great UI things. Airline is one of them
 Plug 'vim-airline/vim-airline'
-" Aaand, themes for it, of course. 
+" Aaand, themes for it, of course.
 Plug 'vim-airline/vim-airline-themes'
-" support for javascript 
+" support for javascript
 Plug 'pangloss/vim-javascript'
-" support for JSX 
+" support for JSX
 Plug 'maxmellon/vim-jsx-pretty'
-" Closes tags with matching (but I think I should move to emmet) 
+" Closes tags with matching (but I think I should move to emmet)
 Plug 'valloric/MatchTagAlways'
-" Insert or delete brackets, parens, etc... in pair 
+" Insert or delete brackets, parens, etc... in pair
 Plug 'jiangmiao/auto-pairs'
 " Lints code. from js to shell. Amazing plugin
 Plug 'w0rp/ale'
-" Comments plugin. Awesome plugin 
+" Comments plugin. Awesome plugin
 Plug 'tpope/vim-commentary'
-" Incredible git interface 
+" Incredible git interface
 Plug 'tpope/vim-fugitive'
-" close jsx/html tags 
+" close jsx/html tags
 " Plug 'alvan/vim-closetag'
 " Emmet
 Plug 'mattn/emmet-vim'
-" git gutter better alternative 
+" git gutter better alternative
 Plug 'mhinz/vim-signify'
-" Ack, with ag support 
+" Ack, with ag support
 Plug 'mileszs/ack.vim'
-" autocompletion. Really powerfull 
+" autocompletion. Really powerfull
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
-
+" elixir syntax support
+Plug 'elixir-editors/vim-elixir'
+" Elixirsense aka intellisense for Elixir:
+Plug 'slashmili/alchemist.vim'
+" Mix vim integration
+Plug 'mattreduce/vim-mix'
+" <Leader>hlt tells you which Highlight groups the word under your cursor has
+Plug 'gerw/vim-HiLinkTrace'
+" Hex colors highlighting
+Plug 'chrisbra/Colorizer'
 call plug#end()
 
 set background=dark
 " Use terminal colors.
 set termguicolors
-color forest-night 
+colorscheme snilek
 " highlights current line
 set cursorline
-" Always write within 80 columns. <3 
+" Always write within 80 columns. <3
 set textwidth=80
 " Use spaces instead of tabs.
 set expandtab
@@ -65,11 +74,11 @@ set shiftround
 set splitbelow
 set splitright
 " Copy indent from last line when starting new line
-set autoindent 
+set autoindent
 " Highlight searches
-set nohlsearch 
+set nohlsearch
 " Ignore case of searches
-set ignorecase 
+set ignorecase
 " make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
 " Highlight dynamically as pattern is typed
@@ -87,7 +96,8 @@ set encoding=utf-8
 " Use system clipboard
 " http://stackoverflow.com/questions/8134647/copy-and-paste-in-vim-via-keyboard-between-different-mac-terminals
 set clipboard+=unnamed
-
+" removes whitespaces on save
+autocmd BufWritePre *.* %s/\s\+$//e
 " disable error bells
 set noerrorbells
 " redraw only when we need to (i.e. don't redraw when executing a macro)
@@ -96,11 +106,11 @@ set lazyredraw
 let mapleader = "\<Space>"
 " Split edit your vimrc. Type space, v, r in sequence to trigger
 nmap <leader>vr :sp $MYVIMRC<cr>
-" edit vimrc in current window 
+" edit vimrc in current window
 nmap <leader>ve :e $MYVIMRC<cr>
-" reload vimrc without quitting vim 
+" reload vimrc without quitting vim
 nmap <leader>so :source $MYVIMRC<cr>
-" find things with ag through ack 
+" find things with ag through ack
 nmap <leader>f :Ack<space>
 
 " Wrapped multilines navigation will work
@@ -138,15 +148,15 @@ let g:mta_filetypes = {
 
 " lint when text changes
 let g:ale_lint_on_text_changed = 'always'
+let g:ale_sign_column_always = 1
 " strip whitespaces (with a package I do not have installed and I can't
 " remember, but someday I will)
 " let g:strip_whitespace_on_save=1
-
 " mapping jk and kj in Insert mode to escape
 imap jk <esc>
 imap kj <esc>
  " Sane backspace behavior
-set backspace=indent,eol,start 
+set backspace=indent,eol,start
 "show invisibles
 set lcs=tab:›\ ,trail:·,eol:¬,nbsp:_
 set fcs=fold:-
@@ -188,3 +198,6 @@ endfunction
 
 " Close all buffers but current
 nmap <Leader>kt :call CloseAllBuffersButCurrent()<CR>
+nmap <Leader>ht :so $VIMRUNTIME/syntax/hitest.vim<CR>
+
+let g:colorizer_auto_filetype='css,html,vim,js'
