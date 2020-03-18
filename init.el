@@ -37,7 +37,7 @@
     ("67aec91de254d44ac115e03d0ef16377101f37b0740deff73fcfa9c242e8d512" default)))
  '(package-selected-packages
    (quote
-    (evil-leader nova-theme spaceline use-package projectile async))))
+    (ox-twbs flycheck-ledger evil-ledger ledger-mode ## evil-leader nova-theme spaceline use-package projectile async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

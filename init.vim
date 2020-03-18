@@ -54,6 +54,8 @@ Plug 'mattreduce/vim-mix'
 Plug 'gerw/vim-HiLinkTrace'
 " Hex colors highlighting
 Plug 'chrisbra/Colorizer'
+" beancount support
+Plug 'nathangrigg/vim-beancount'
 call plug#end()
 
 set background=dark
@@ -133,7 +135,7 @@ let g:ctrlp_use_caching = 0
 
 " number actual current line, but make relative every other line.
 set number
-set relativenumber
+" set relativenumber
 
 " Bind `q` to close the buffer for help files
 autocmd Filetype help nnoremap <buffer> q :q<CR>

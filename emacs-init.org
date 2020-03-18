@@ -36,17 +36,20 @@
 
 
 ;; basic ui and stuff
-;; (linum-relative-on)
-(linum-mode)
+(linum-relative-on)
+;; (linum-mode)
 
  (setq zenburn-override-colors-alist
-      '(("zenburn-bg" . "#3A4A52")))
+      '(("zenburn-bg" . "#15232A")))
 ;;      '(("zenburn-bg" . "#2E2E2E")))
 (load-theme 'zenburn t)
+
+(global-hl-line-mode t)
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+(setq make-backup-files nil)
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -72,11 +75,11 @@
     (projectile-mode 1))
 
 ;; Spaceline is the airline of spacemacs. Spacemacs is an open source
-;; emacs configuration that you should try if you do not want to learn elisp
-;; or just want a decent editor without writing a thousand lines of conf.
-;; I do not use it personally, because it slows emacs A LOT. (for somone who
-;; open instances using tmux in a terminal for quick edits frequently). But
-;; spaceline is the coolest thing ever.
+;; emacs configuration that you should try if you do not want to learn
+;; elisp or just want a decent editor without writing a thousand lines
+;; of conf. I do not use it personally, because it slows emacs A LOT.
+;; (for somone who open instances using tmux in a terminal for quick
+;; edits frequently). But  spaceline is the coolest thing ever.
 
 (use-package spaceline
   :ensure t
@@ -93,12 +96,27 @@
 Org mode:
 #+BEGIN_SRC emacs-lisp
 
+;; Breaks line before fci ruler
+(add-hook 'org-mode-hook '(lambda () (setq fill-column 65)))
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
+
+(add-hook 'org-mode-hook 'org-indent-mode)
+(setq org-tags-column 73)
+
 (use-package org-bullets
   :ensure t
   :init
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 2)))
-)
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 2))))
 
+(add-hook 'after-change-major-mode-hook 'fci-mode)
+(use-package fill-column-indicator
+  :ensure t
+  :init
+  (setq fci-rule-width 1)
+  (setq fci-rule-column 71)
+  (setq fci-rule-use-dashes t)
+  (setq fci-dash-pattern 1.0)
+  (setq fci-rule-color "white"))
 
 (add-hook 'org-mode-hook
   (lambda ()
@@ -112,5 +130,18 @@ Org mode:
         (define-key org-mode-map (kbd "C-c h") 'org-metaleft)
         (define-key org-mode-map (kbd "C-c j") 'org-metadown)
         (define-key org-mode-map (kbd "C-c k") 'org-metaup)))))
+
+#+END_SRC
+
+ledgers:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package ledger-mode
+    :ensure t
+    :mode ("\\.ledger\\'"
+           "\\.ldg\\'")
+    :custom (ledger-clear-whole-transactions t))
+
+  (use-package flycheck-ledger :after ledger-mode)
 
 #+END_SRC

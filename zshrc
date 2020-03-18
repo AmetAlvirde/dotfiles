@@ -15,6 +15,7 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 # export PATH=$HOME/bin:/usr/local/bin:$PATH -> should move to .zshenv
 # Exports language and encoding. I like to be explicit with this.
 export LANG=en_US.UTF-8
+export "PATH=$HOME/.local/bin:$PATH"
 # export powerlevel9k theme. I installed via AUR and symlinked to this:
 source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 
@@ -93,11 +94,31 @@ alias stop-postgres='sudo systemctl stop postgresql.service'
 # reload dotfiles (should refactor)
 alias dotfiles='sh ~/DevAlevardi/OpenSource/dotfiles/install'
 alias galiases='git config --list | grep alias'
+# javascript testing stuff
+alias ltf='jest --watchAll'
+alias gst='git standup'
+alias qapi='QRKY_SERVER=10.22.0.30 DEV=true nodemon'
+alias scast='ffmpeg -f x11grab -video_size 1920x1080 -framerate 25 -i $DISPLAY -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac ~/screencast.mp4'
+# alias npmgremove='npm ls -gp --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm -g rm'
+
+alias rogue="/usr/bin/google-chrome-stable --user-data-dir='/home/amet/no-secure-chrome' --disable-web-security"
+
+
+# Aliases for WCT:
+export LAUNCHPAD_CHROME=/usr/bin/google-chrome-stable
+
+function screencast() {
+
+  ffmpeg -f x11grab -video_size 1920x1080 -framerate 25 -i $DISPLAY -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac $1
+
+}
 
 # forget forever mkdir something && cd something
 function mkcd() { mkdir -p $1 && cd $1 }
 function cdf() { cd *$1*/ } # stolen from @topfunky
 
+function gbbva() { git config --global user.name "ramonamet.alvirde.contractor"  && git config --global user.email "ramonamet.alvirde.contractor@bbva.com" }
+function gmine() { git config --global user.name "Amet Alvirde"  && git config --global user.email "Amet.Alvirde@gmail.com" }
 
 # Sources asdf and its completions
 . $HOME/.asdf/asdf.sh
