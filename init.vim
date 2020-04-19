@@ -125,8 +125,11 @@ nmap <leader>vs :vnew <C-r>=escape(expand("%:p:h"), ' ') . '/'<cr>
 
 " Command aliases for typoed commands (accidentally holding shift too long)
 command! Q q " Bind :Q to :q
+command! W q " Bind :W to :w
 command! Qall qall
+command! Wall wall
 command! QA qall
+command! WA wall
 command! E e
 
 " CtrlP uses ag
@@ -140,9 +143,21 @@ set number
 " Bind `q` to close the buffer for help files
 autocmd Filetype help nnoremap <buffer> q :q<CR>
 
+" let g:ale_linters = {
+" \  'javascript': ['eslint'],
+" \  'jsx': ['eslint']
+" \}
+
+" let g:ale_fixers = {
+" \  'javascript': ['eslint'],
+" \  'jsx': ['eslint']
+" \}
+" let g:ale_sign_column_always = 1
+
 " set ale to fix javascript using prettier-eslint on save.
 let g:ale_fixers = {'javascript': ['prettier-eslint']}
 let g:ale_fix_on_save = 1
+let g:ale_prettier_eslint_use_global = 1
 " match tag always in jsx
 let g:mta_filetypes = {
   \ 'javascript.jsx': 1,

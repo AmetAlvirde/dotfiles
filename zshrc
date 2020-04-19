@@ -1,6 +1,13 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Overview:
 #
-# I use ZSH instead of bash, along with oh-my-zsh, powerlevel9k theme
+# I use ZSH instead of bash, along with oh-my-zsh, powerlevel10k theme
 # and asdf as my programming languages version manager. (like nvm,
 # but for everthing)
 
@@ -16,49 +23,49 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 # Exports language and encoding. I like to be explicit with this.
 export LANG=en_US.UTF-8
 export "PATH=$HOME/.local/bin:$PATH"
-# export powerlevel9k theme. I installed via AUR and symlinked to this:
-source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+# export powerlevel10k theme. I installed via AUR and symlinked to this:
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
-# I use powerlevel9k theme for my prompt
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# I use powerlevel10k theme for my prompt
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Show something like:
 # amet@winterfell > /dotfiles > master > ok
 # where okay is the status of the last shell exit code.
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs status)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL10K_LEFT_PROMPT_ELEMENTS=(context dir vcs status)
+POWERLEVEL10K_RIGHT_PROMPT_ELEMENTS=()
+POWERLEVEL10K_PROMPT_ON_NEWLINE=true
 
 # These two settings ensure that I always just see the current
 # directory in which I'm working.
 # ~/OpenSource/Dotfiles/ = /Dotfiles
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=''
+POWERLEVEL10K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL10K_SHORTEN_DELIMITER=''
 
-# Custom colors for my powerlevel9k segments.
-POWERLEVEL9K_DATE_BACKGROUND="black"
-POWERLEVEL9K_DATE_FOREGROUND="white"
+# Custom colors for my powerlevel10k segments.
+POWERLEVEL10K_DATE_BACKGROUND="black"
+POWERLEVEL10K_DATE_FOREGROUND="white"
 
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND="darkred"
-POWERLEVEL9K_STATUS_ERROR_FOREGROUND="grey93"
+POWERLEVEL10K_STATUS_ERROR_BACKGROUND="darkred"
+POWERLEVEL10K_STATUS_ERROR_FOREGROUND="grey93"
 
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="blue"
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="grey93"
+POWERLEVEL10K_CONTEXT_DEFAULT_BACKGROUND="blue"
+POWERLEVEL10K_CONTEXT_DEFAULT_FOREGROUND="grey93"
 
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND="green"
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND="grey23"
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="green"
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND="grey23"
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND="grey23"
+POWERLEVEL10K_VCS_CLEAN_BACKGROUND="green"
+POWERLEVEL10K_VCS_CLEAN_FOREGROUND="grey23"
+POWERLEVEL10K_VCS_UNTRACKED_BACKGROUND="green"
+POWERLEVEL10K_VCS_UNTRACKED_FOREGROUND="grey23"
+POWERLEVEL10K_VCS_MODIFIED_FOREGROUND="grey23"
 
-POWERLEVEL9K_DIR_HOME_BACKGROUND="blue"
-POWERLEVEL9K_DIR_HOME_FOREGROUND="grey93"
+POWERLEVEL10K_DIR_HOME_BACKGROUND="blue"
+POWERLEVEL10K_DIR_HOME_FOREGROUND="grey93"
 
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="blue"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="grey85"
+POWERLEVEL10K_DIR_HOME_SUBFOLDER_BACKGROUND="blue"
+POWERLEVEL10K_DIR_HOME_SUBFOLDER_FOREGROUND="grey85"
 
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="blue"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="grey93"
+POWERLEVEL10K_DIR_DEFAULT_BACKGROUND="blue"
+POWERLEVEL10K_DIR_DEFAULT_FOREGROUND="grey93"
 
 # asdf: its a version manager for any programming language you can
 # imagine.
@@ -124,3 +131,5 @@ function gmine() { git config --global user.name "Amet Alvirde"  && git config -
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
