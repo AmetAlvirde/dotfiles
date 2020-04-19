@@ -17,7 +17,8 @@
       "~/.config/nvim/init.vim":   "init.vim",
       "~/.gitconfig":              "gitconfig",
       "~/.emacs.d/init.el":        "init.el",
-      "~/.emacs.d/emacs-init.org": "emacs-init.org"
+      "~/.emacs.d/emacs-init.org": "emacs-init.org",
+      "~/.config/qtile/config.py": "qtile-config.py"
     }
   },
   {
