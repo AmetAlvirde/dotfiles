@@ -15,9 +15,6 @@
       "~/.config/nvim/init.vim":   "nvim/init.vim",
       "~/.doom.d/config.el":       "doom-emacs/config.el",
       "~/.doom.d/init.el":         "doom-emacs/init.el",
-      "~/.doom.d/packages.el":     "doom-emacs/packages.el",
-      "~/.emacs.d/init.el":        "vainilla-emacs/init.el",
-      "~/.emacs.d/emacs-init.org": "vainilla-emacs/emacs-init.org",
       "~/.gitconfig":              "git/gitconfig",
       "~/.tmux.conf":              "tmux/tmux.conf",
       "~/.zshrc":                  "zsh/zshrc"
