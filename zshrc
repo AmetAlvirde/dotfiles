@@ -107,9 +107,10 @@ alias gst='git standup'
 alias qapi='QRKY_SERVER=10.22.0.30 DEV=true nodemon'
 alias scast='ffmpeg -f x11grab -video_size 1920x1080 -framerate 25 -i $DISPLAY -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac ~/screencast.mp4'
 # alias npmgremove='npm ls -gp --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm -g rm'
+#
+alias bbvadots='cp ~/DevAlevardi/project-setups/bbva-cells/.eslintrc .eslintrc && cp ~/DevAlevardi/project-setups/bbva-cells/.prettierrc .prettierrc && cp ~/DevAlevardi/project-setups/bbva-cells/jsconfig.json jsconfig.json && cp ~/DevAlevardi/project-setups/bbva-cells/.tool-versions .tool-versions'
 
-alias rogue="/usr/bin/google-chrome-stable --user-data-dir='/home/amet/no-secure-chrome' --disable-web-security"
-
+  alias rogue="/usr/bin/google-chrome-stable --user-data-dir='/home/amet/no-secure-chrome' --disable-web-security"
 
 # Aliases for WCT:
 export LAUNCHPAD_CHROME=/usr/bin/google-chrome-stable
@@ -133,3 +134,17 @@ function gmine() { git config --global user.name "Amet Alvirde"  && git config -
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+# React native android configuration
+
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Fixes licenses problems
+# Did not work, because java.se.ee was removed on java 11. It needs to
+# degrade to java 10 to work.
+export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'

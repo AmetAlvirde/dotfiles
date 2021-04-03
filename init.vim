@@ -6,7 +6,8 @@
 " Vimplug is my vim package manager
 call plug#begin('~/.local/share/nvim/plugged')
 
-"Custom on development colorscheme:
+Plug 'lifepillar/vim-solarized8'
+"Custom on development colorscheme
 Plug 'ametalvirde/vim-snilek'
 " seamless navigation between tmux and vim
 Plug 'christoomey/vim-tmux-navigator'
@@ -43,7 +44,9 @@ Plug 'mhinz/vim-signify'
 " Ack, with ag support
 Plug 'mileszs/ack.vim'
 " autocompletion. Really powerfull
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+" Currently on hold due to problems with python compilation soon to be
+" taken care of:
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 " elixir syntax support
 Plug 'elixir-editors/vim-elixir'
 " Elixirsense aka intellisense for Elixir:
@@ -58,10 +61,11 @@ Plug 'chrisbra/Colorizer'
 Plug 'nathangrigg/vim-beancount'
 call plug#end()
 
-set background=dark
 " Use terminal colors.
 set termguicolors
-colorscheme snilek
+set background=dark
+colorscheme solarized8
+let g:solarized_termcolor=256
 " highlights current line
 set cursorline
 " Always write within 80 columns. <3
@@ -131,6 +135,7 @@ command! Wall wall
 command! QA qall
 command! WA wall
 command! E e
+command! Sq q
 
 " CtrlP uses ag
 let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
@@ -148,11 +153,11 @@ autocmd Filetype help nnoremap <buffer> q :q<CR>
 " \  'jsx': ['eslint']
 " \}
 
-" let g:ale_fixers = {
-" \  'javascript': ['eslint'],
-" \  'jsx': ['eslint']
-" \}
-" let g:ale_sign_column_always = 1
+let g:ale_fixers = {
+\  'javascript': ['eslint'],
+\  'jsx': ['eslint']
+\}
+let g:ale_sign_column_always = 1
 
 " set ale to fix javascript using prettier-eslint on save.
 let g:ale_fixers = {'javascript': ['prettier-eslint']}
@@ -168,7 +173,8 @@ let g:ale_lint_on_text_changed = 'always'
 let g:ale_sign_column_always = 1
 " strip whitespaces (with a package I do not have installed and I can't
 " remember, but someday I will)
-" let g:strip_whitespace_on_save=1
+let g:strip_whitespace_on_save=1
+
 " mapping jk and kj in Insert mode to escape
 imap jk <esc>
 imap kj <esc>

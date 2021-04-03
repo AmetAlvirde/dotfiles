@@ -38,3 +38,5 @@
   ureset = !git reset --hard $(git upstream)
 [commit]
   template = ~/.gitmessage
+[init]
+	defaultBranch = main
