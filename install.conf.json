@@ -12,13 +12,12 @@
   },
   {
     "link": {
-      "~/.tmux.conf":              "tmux.conf",
-      "~/.zshrc":                  "zshrc",
-      "~/.config/nvim/init.vim":   "init.vim",
-      "~/.gitconfig":              "gitconfig",
-      "~/.emacs.d/init.el":        "init.el",
-      "~/.emacs.d/emacs-init.org": "emacs-init.org",
-      "~/.config/qtile/config.py": "qtile-config.py"
+      "~/.config/nvim/init.vim":   "nvim/init.vim",
+      "~/.emacs.d/init.el":        "vainilla-emacs/init.el",
+      "~/.emacs.d/emacs-init.org": "vainilla-emacs/emacs-init.org",
+      "~/.gitconfig":              "git/gitconfig",
+      "~/.tmux.conf":              "tmux/tmux.conf",
+      "~/.zshrc":                  "zsh/zshrc"
     }
   },
   {
